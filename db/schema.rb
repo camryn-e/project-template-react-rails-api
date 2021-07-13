@@ -10,14 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_10_212824) do
+ActiveRecord::Schema.define(version: 2021_07_12_194934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.integer "tournaments_won"
+  create_table "scorecards", force: :cascade do |t|
+    t.string "tournament_name"
+    t.integer "round_1"
+    t.integer "round_2"
+    t.integer "round_3"
+    t.integer "round_4"
+    t.integer "round_5"
+    t.integer "round_6"
+    t.integer "round_7"
+    t.integer "round_8"
+    t.integer "round_9"
+    t.integer "round_10"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_212824) do
     t.string "username"
     t.string "name"
     t.string "password_digest"
-    t.integer "team_id"
+    t.string "home_alley"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
