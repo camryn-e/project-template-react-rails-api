@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   get '/scorecards', to: 'scorecards#index'
   post '/scorecards', to: 'scorecards#create'
   get '/scorecards/:id', to:'scorecards#show'
+  # resources :user, only: [:create, :update, :destroy] do
+  #   resources :scorecards, only: [:index]
+  # end
+
+  get '/most-scorecards', to: 'users#most_scorecards'
   
+
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

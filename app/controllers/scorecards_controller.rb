@@ -1,19 +1,19 @@
 class ScorecardsController < ApplicationController
     before_action :authorize
 
-    def create
+    def create # add a scorecard
         user = User.find(session[:user_id])
         score_card = user.scorecards.create(score_card_params)
         render json: score_card
     end
 
-    def index
+    def index # get all user's scorecards
         user = User.find(session[:user_id])
         score_cards = user.scorecards
         render json: score_cards
     end
 
-    def show
+    def show # get specific scorecard from user
         user = User.find(session[:user_id])
         score_card = user.scorecards.find(params[:id])
         render json: score_card

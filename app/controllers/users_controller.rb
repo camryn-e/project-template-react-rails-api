@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :find_user, except: [:create]
+    # skip_before_action only: [:create]
 
     def create # signup
         user = User.create(user_params)
@@ -6,7 +8,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             render json: user
         else
-            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            render json: { error: user.errors.full_messages.to_sentence }, status: :unprocessable_entity
         end
     end
 
@@ -29,10 +31,20 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def most_scorecards
+        user_id = User.most_scorecards.first
+        user = User.find_by(id: user_id)
+        render json: user
+    end
+
     private
 
     def user_params
         params.permit(:username, :name, :password, :password_confirmation, :home_alley)
+    end
+
+    def find_user
+        user = User.find(session[:user_id])
     end
 
 end

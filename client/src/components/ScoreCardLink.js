@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 const ScoreCardLink = (props) => {
 
+    
+
     return (
         <div>
             <Link to={`/scorecards/${props.scoreCard.id}`}>

@@ -6,6 +6,7 @@ const SignupForm = ({onLogin}) => {
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [name, setName] = useState('');
     const [home_alley, setHomeAlley] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
             e.preventDefault();
@@ -24,7 +25,12 @@ const SignupForm = ({onLogin}) => {
             })
             .then(res => res.json())
             .then(newUser => {
-                onLogin(newUser)
+                if(newUser.error){
+                    console.log(newUser.error)
+                    setError(newUser.error)
+                }else{
+                    onLogin(newUser)
+                }
             })
     }
 
@@ -68,6 +74,7 @@ const SignupForm = ({onLogin}) => {
                     <br/>
                     <button type="submit">Sign Up!</button> 
                 </form>
+                <h3>{error}</h3> 
             </div>
     )
 
