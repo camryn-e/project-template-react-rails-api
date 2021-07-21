@@ -2,26 +2,22 @@ class ScorecardsController < ApplicationController
     before_action :authorize
 
     def create
-        # byebug
         user = User.find(session[:user_id])
         score_card = user.scorecards.create(score_card_params)
-        # score_card.user_id = session[:user_id]
         render json: score_card
     end
 
     def index
-        # byebug
         user = User.find(session[:user_id])
         score_cards = user.scorecards
         render json: score_cards
     end
 
-    # def destroy
-    #     user = User.find(session[:user_id])
-    #     score_card = user.scorecards.find(params[:id])
-    #     user.scorecards.delete(score_card)
-    #     head :no_content
-    # end
+    def show
+        user = User.find(session[:user_id])
+        score_card = user.scorecards.find(params[:id])
+        render json: score_card
+    end
 
     private
 

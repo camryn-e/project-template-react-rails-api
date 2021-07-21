@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   delete '/delete-account', to: 'users#destroy'
   get '/scorecards', to: 'scorecards#index'
   post '/scorecards', to: 'scorecards#create'
-
-  # post '/maketeam', to: 'teams#create'
+  get '/scorecards/:id', to:'scorecards#show'
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

@@ -8,7 +8,6 @@ const SignupForm = ({onLogin}) => {
     const [home_alley, setHomeAlley] = useState('');
 
     const handleSubmit = (e) => {
-        // debugger
             e.preventDefault();
             fetch('/signup', {
                 method: 'POST',
@@ -25,10 +24,8 @@ const SignupForm = ({onLogin}) => {
             })
             .then(res => res.json())
             .then(newUser => {
-                // debugger
                 onLogin(newUser)
             })
-            // console.log(this.state)
     }
 
     return (
@@ -43,14 +40,14 @@ const SignupForm = ({onLogin}) => {
                     <br/>
                     <label>
                         Password:
-                    <input type="text" 
+                    <input type="password" 
                     id="password"
                     value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </label>
                     <br/>
                     <label>
                         Confirm Password:
-                    <input type="text" 
+                    <input type="password" 
                     id="password_comformation"
                     value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}/>
                     </label>

@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import UpdateAlleyForm from './components/UpdateAlleyForm';
 import SignupForm from './components/SignupForm';
 import ScoreCards from './components/ScoreCards';
+import ScoreCard from './components/ScoreCard';
 
 
 function App() {
@@ -28,12 +29,6 @@ function App() {
       }
     })
   },[])
-  
-  // const signupUser = (u) => {
-  //   setLoggedIn(true)
-  //   setUser(u)
-  //   history.push('/')
-  // }
 
   const loginUser = (u) => {
     setLoggedIn(true)
@@ -64,8 +59,6 @@ function App() {
       method: 'DELETE'
     })
     .then(() => {
-      console.log('deleted account')
-      // debugger
       setLoggedIn(false)
       setUser({})
     })
@@ -79,6 +72,7 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/login' render={routerProps => <LoginForm {...routerProps} onLogin={loginUser}/>} />
         <Route exact path='/signup' render={routerProps => <SignupForm {...routerProps} onLogin={loginUser}/>} />
+        <Route path={`/scorecards/:id`} component={ScoreCard} />
         <Route exact path='/scorecards' render={routerProps => <ScoreCards {...routerProps} user={user} loggedIn={loggedIn}/>} />
         <Route exact path='/change-alley' render={routerProps => <UpdateAlleyForm {...routerProps} user={user} loggedIn={loggedIn} onChangeAlley={updateAlley}/>} />
       </Switch>

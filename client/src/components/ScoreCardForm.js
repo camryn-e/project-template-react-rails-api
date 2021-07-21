@@ -14,7 +14,6 @@ const ScoreCardForm = ({addAScoreCard}) => {
     const [round_10, setRound10] = useState(0);
 
     const handleSubmit = (e) => {
-        // debugger
         e.preventDefault();
             
         addAScoreCard({
@@ -30,7 +29,6 @@ const ScoreCardForm = ({addAScoreCard}) => {
             round_9: round_9,
             round_10: round_10
             })
-            // console.log(this.state)
     }
 
     return (

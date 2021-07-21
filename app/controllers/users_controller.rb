@@ -26,8 +26,6 @@ class UsersController < ApplicationController
         user = User.find(session[:user_id])
         user.destroy
         session.delete :user_id
-        # byebug
-        # head :no_content
         render json: user
     end
 
